@@ -1,13 +1,16 @@
-
-import { GoogleGenAI } from "@google/genai";
+import { GoogleGenAI } from "@google/genai"; // Matching your uploaded file
 import { GenerationSettings } from "../types";
+
+// Hardcoded API Key for your GitHub deployment
+const API_KEY = "AIzaSyCjMJu-eJc42FlOrT1cez16FJ-NMkdj4b4";
 
 export const generateImage = async (
   prompt: string, 
   settings: GenerationSettings, 
   imageData?: { data: string; mimeType: string }
 ) => {
-  const ai = new GoogleGenAI({ apiKey: process.env.API_KEY as string });
+  // Use the key directly here instead of process.env.API_KEY
+  const ai = new GoogleGenAI({ apiKey: API_KEY });
 
   const fullPrompt = `${prompt}${settings.style}`;
   
